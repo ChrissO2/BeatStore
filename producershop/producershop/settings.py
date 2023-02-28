@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'shop',
 ]
 
@@ -79,12 +80,10 @@ WSGI_APPLICATION = 'producershop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'producer_shop',
-        'USER': 'producer_shop_user',
-        'PASSWORD': db_password,
+        'USER': 'root',
         'HOST': '127.0.0.1',
-        # 'PORT': '',
     }
 }
 
@@ -137,3 +136,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = host_mail
 EMAIL_HOST_PASSWORD = email_password
 EMAIL_PORT = 587
+
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING': False,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+}
