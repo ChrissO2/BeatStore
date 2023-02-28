@@ -80,9 +80,10 @@ WSGI_APPLICATION = 'producershop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'producer_shop',
-        'USER': 'root',
+        'USER': 'krzysztofotreba',
+        'PASSWORD': db_password,
         'HOST': '127.0.0.1',
     }
 }
