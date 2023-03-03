@@ -1,0 +1,14 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Create account">
+
+</form>
+<p>{{ form.errors.username }}
+    {{ form.errors.email }}
+    {{ form.errors.password }}
+    {{ error }}</p>
+{% endblock %}

@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 from .private_data import *
@@ -30,6 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# SESSION_COOKIE_AGE = 86400
+
 
 # Application definition
 
@@ -40,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'static',
     'shop',
 ]
 
@@ -83,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'producer_shop',
         'USER': 'krzysztofotreba',
-        'PASSWORD': db_password,
+        'PASSWORD': DB_PASSWORD,
         'HOST': '127.0.0.1',
     }
 }
@@ -124,6 +128,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -134,12 +144,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = host_mail
-EMAIL_HOST_PASSWORD = email_password
+EMAIL_HOST_USER = HOST_MAIL
+EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
 EMAIL_PORT = 587
-
-REST_FRAMEWORK = {
-    'COERCE_DECIMAL_TO_STRING': False,
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 10,
-}

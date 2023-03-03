@@ -1,0 +1,13 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Login">
+</form>
+{% for message in messages%}
+<p>{{ message }}</p>
+{% endfor %}
+<p> {{ error }}</p>
+{% endblock %}

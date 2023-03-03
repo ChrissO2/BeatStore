@@ -1,0 +1,31 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+
+<h1>Your Cart</h1>
+
+{% if created %}
+<h1>Your cart is empty!</h1>
+
+{% else %}
+
+<ul>
+    {% for item in order_items %}
+
+    <p>{{ item.product.name }}</p>
+    <img src="/media/{{ item.product.cover_img }}" alt="cover">
+    <p>{{ item.product.price }}</p>
+    <button data-product="{{ item.product.id }}" data-action="remove" class="btn add-btn update-cart">Remove from
+        cart</button>
+
+    {% endfor%}
+
+</ul>
+<p>Total price: {{ total_price }}</p>
+
+<button>Go to payment</button>
+
+{% endif %}
+
+
+
+{% endblock %}
