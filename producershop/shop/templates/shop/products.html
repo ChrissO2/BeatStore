@@ -9,7 +9,7 @@
         <p>{{ product.name }}</p>
         <p>{{ product.genre.name }}</p>
         <p>{{ product.price }}</p>
-        <img src="/media/{{ product.cover_img }}" alt="cover">
+        <img src="/media/{{ product.cover_img }}" height="300" width="300" alt="cover">
         {% if product.tagged_file %}
         <audio controls>
             <source src="/media/{{ product.tagged_file}}" type="audio/mp3">
@@ -23,6 +23,7 @@
         {% endif %}
 
         <button data-product="{{ product.id }}" data-action="add" class="btn add-btn update-cart">Add to cart</button>
+
     </li>
 
     {% endfor %}

@@ -74,8 +74,10 @@ class ProductsView(View):
 
     def get(self, request, *args, **kwargs):
         products = Product.objects.filter(avaiable=True)
+        user = request.user
         ctx = {
-            "products": products
+            "products": products,
+            'user': user
         }
         return render(request, self.template_name, ctx)
 
